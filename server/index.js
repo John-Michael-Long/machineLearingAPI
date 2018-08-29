@@ -2,7 +2,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 //const morgan = require('morgan');
 const routes = require('./routes.js');
-//const db = require('../database/index.js');
 
 const app = express();
 const PORT = 3000;
@@ -26,12 +25,43 @@ app.use((req, res, next) => {
   next();  
 });
 
+
 app.use( (req, res) => {
   res.send("hello world");
 });
 
-//app.use(express.static(__dirname + '/../public'));
+//API:  /experiments/experimentID
+app.use('/experiments', routes);
+
+//if not found in route above then error
+app.use((req, res, next) => {
+  const error = new Error('Not found');
+  error.status = 404;
+  next(error);
+});
+
+//handles errors from router
+app.use((error, req, res, next) => {
+  res.status(error.status || 500);
+  console.log('in error handler')
+  res.json({
+    error: {
+      message: error.message,
+    },
+  });
+});
 
 app.listen(PORT, () => {
   console.log(`listening on port ${PORT}`);
 });
+
+
+
+
+
+
+
+
+
+
+
