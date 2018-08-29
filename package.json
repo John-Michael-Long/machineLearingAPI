@@ -1,0 +1,32 @@
+{
+  "name": "machine-learning-api",
+  "version": "1.0.0",
+  "description": "Web service with an API that provides a user ability to create and update some experiments, train and test a simple machine learning model",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start-dev": "nodemon server/index.js",
+    "start": "node server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/John-Michael-Long/machineLearningAPI.git"
+  },
+  "author": "JM Long",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/John-Michael-Long/machineLearningAPI/issues"
+  },
+  "homepage": "https://github.com/John-Michael-Long/machineLearningAPI#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "morgan": "^1.9.0",
+    "pg": "^6.1.0",
+    "redis": "^2.8.0",
+    "axios": "^0.18.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.3"
+  }
+}
